@@ -12,7 +12,7 @@ public class LogoUser {
     private long id;
 
     @Lob
-    @Column(name = "logo", columnDefinition="mediumblob")
+    @Column(name = "logo")
     private  byte[] logo;
 
     public LogoUser() {
