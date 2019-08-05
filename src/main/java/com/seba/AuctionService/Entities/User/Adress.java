@@ -1,17 +1,29 @@
 package com.seba.AuctionService.Entities.User;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "adress")
 public class Adress {
 
+    @Column(name = "id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(name = "province")
     private String province;
 
+    @Column(name = "city")
     private String city;
 
+    @Column(name = "zip_code")
     private String zipCode;
 
+    @Column(name = "street")
     private String street;
 
+    @Column(name = "home_number")
     private String homeNumber;
 
     public Adress() {
