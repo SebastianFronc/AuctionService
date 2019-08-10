@@ -33,7 +33,7 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "addnewuser", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/addnewuser", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity addNewUser(@RequestBody User user){
         try {
             userService.save(user);

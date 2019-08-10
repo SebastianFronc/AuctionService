@@ -10,8 +10,9 @@
 </head>
 <body>
 <div class="d-flex justify-content-center">
+    <form th:object="${user}" action="#" th:action="@{/addnewuser}" method="post">
     <div class="d-flex justify-content-center">
-        <div class="card" th:object="${user}" action="#" th:action="@{/addnewuser}" method="post">
+        <div class="card" >
             <article class="card-body">
                 <h4 class="card-title text-center mb-4 mt-1">Registration</h4>
                 <hr>
@@ -40,7 +41,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="Password" type="text" th:field="*{password}">
+                        <input name="" class="form-control" placeholder="Password" type="password" th:field="*{password}">
                     </div>
                 </div>
 
@@ -48,14 +49,7 @@
                 <article class="card-body">
                     <h4 class="card-title text-center mb-4 mt-1">Adress</h4>
                     <hr>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                            </div>
-                            <input name="" class="form-control" placeholder="Password" type="text" th:field="*{password}">
-                        </div>
-                    </div>
+
 
                 </article>
                 </div>
@@ -64,5 +58,9 @@
                 </article>
         </div>
     </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Register User</button>
+        </div>
+    </form>
 </div>
 </body>
