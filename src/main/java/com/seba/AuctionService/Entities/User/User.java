@@ -20,7 +20,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "adress_id")
     private Adress adress;
 
@@ -32,7 +32,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private StatusUser statusUser;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "logo_id")
     private LogoUser logoUser;
 

@@ -20,7 +20,12 @@ public class UserService {
     }
 
     public void save(User user){
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userInterface.save(user);
+    }
+
+    public User findUserByEmail(String email){
+        return userInterface.findUserByEmail(email);
     }
 
 
