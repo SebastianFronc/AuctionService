@@ -1,6 +1,7 @@
 package com.seba.AuctionService.Entities.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "user")
@@ -12,6 +13,7 @@ public class User {
     private long id;
 
     @Column(name = "email")
+    @Email(message = "Please provide a valid email")
     private String email;
 
     @Column(name = "name")
@@ -29,7 +31,7 @@ public class User {
     private RoleUser roleUser;
 
     @Column(name = "status")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private StatusUser statusUser;
 
     @OneToOne(cascade = CascadeType.ALL)

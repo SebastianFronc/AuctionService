@@ -30,6 +30,13 @@ public class UserController {
         return modelAndView;
     }
 
+    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
+    public ModelAndView home(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("home");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -40,22 +47,23 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public RedirectView addNewUser(@Valid User user, BindingResult bindingResult){
-
+    public ModelAndView addNewUser(@Valid User user, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView();
         User userExists = userService.findUserByEmail(user.getEmail());
 
         if (userExists != null) {
             bindingResult.rejectValue("email", "error.user", "There is already a user registered with the email provided");
         } if(bindingResult.hasErrors()) {
-            return new RedirectView("/registration");
+            modelAndView.setViewName("registration");
         } else {
             user.setTypeUser(TypeUser.NORMAL);
             user.setStatusUser(StatusUser.ACTIV);
             user.setRoleUser(RoleUser.USER);
             userService.save(user);
-            return new RedirectView("/");
+            modelAndView.setViewName("redirect:/login");
 
         }
+        return modelAndView;
     }
 
 }
