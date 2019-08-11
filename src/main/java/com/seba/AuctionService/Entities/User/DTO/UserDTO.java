@@ -1,48 +1,19 @@
-package com.seba.AuctionService.Entities.User;
+package com.seba.AuctionService.Entities.User.DTO;
 
-import javax.persistence.*;
-import javax.validation.constraints.Email;
+import com.seba.AuctionService.Entities.User.*;
 
-@Entity
-@Table(name = "user")
-public class User {
-
-    @Column(name = "id")
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class UserDTO {
     private long id;
-
-    @Column(name = "email")
-    @Email(message = "Please provide a valid email")
     private String email;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "password")
     private String password;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress_id")
     private Adress adress;
-
-    @Column(name = "role")
-    @Enumerated(EnumType.STRING)
     private RoleUser roleUser;
-
-    @Column(name = "activ")
     private boolean activ;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "logo_id")
     private LogoUser logoUser;
-
-    @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
 
-    public User() {
-        this.adress = new Adress();
-        this.logoUser = new LogoUser();
+    public UserDTO() {
     }
 
     public long getId() {
@@ -93,13 +64,7 @@ public class User {
         this.roleUser = roleUser;
     }
 
-    public boolean isActiv() {
-        return activ;
-    }
 
-    public void setActiv(boolean activ) {
-        this.activ = activ;
-    }
 
     public LogoUser getLogoUser() {
         return logoUser;
@@ -116,4 +81,6 @@ public class User {
     public void setTypeUser(TypeUser typeUser) {
         this.typeUser = typeUser;
     }
+
+
 }
