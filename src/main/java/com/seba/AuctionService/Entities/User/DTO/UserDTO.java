@@ -9,7 +9,7 @@ public class UserDTO {
     private String password;
     private Adress adress;
     private RoleUser roleUser;
-    private StatusUser statusUser;
+    private boolean activ;
     private LogoUser logoUser;
     private TypeUser typeUser;
 
@@ -64,13 +64,7 @@ public class UserDTO {
         this.roleUser = roleUser;
     }
 
-    public StatusUser getStatusUser() {
-        return statusUser;
-    }
 
-    public void setStatusUser(StatusUser statusUser) {
-        this.statusUser = statusUser;
-    }
 
     public LogoUser getLogoUser() {
         return logoUser;
@@ -86,31 +80,6 @@ public class UserDTO {
 
     public void setTypeUser(TypeUser typeUser) {
         this.typeUser = typeUser;
-    }
-
-    public UserDTO(User user){
-        this.id = user.getId();
-        this.email = user.getEmail();
-        this.name = user.getName();
-        this.adress = user.getAdress();
-        this.password = user.getPassword();
-        this.roleUser = user.getRoleUser();
-        this.statusUser = user.getStatusUser();
-        this.logoUser = user.getLogoUser();
-        this.typeUser = user.getTypeUser();
-    }
-
-    public User getUser(){
-        User user = new User();
-        user.setEmail(this.email);
-        user.setName(this.name);
-        user.setAdress(this.adress);
-        user.setPassword(this.password);
-        user.setRoleUser(this.roleUser);
-        user.setStatusUser(this.statusUser);
-        user.setLogoUser(this.logoUser);
-        user.setTypeUser(this.typeUser);
-        return user;
     }
 
 

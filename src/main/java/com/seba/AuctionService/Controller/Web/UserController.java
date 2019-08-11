@@ -57,7 +57,7 @@ public class UserController {
             modelAndView.setViewName("registration");
         } else {
             user.setTypeUser(TypeUser.NORMAL);
-            user.setStatusUser(StatusUser.ACTIV);
+            user.setActiv(true);
             user.setRoleUser(RoleUser.USER);
             userService.save(user);
             modelAndView.setViewName("redirect:/login");

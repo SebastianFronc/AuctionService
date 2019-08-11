@@ -30,9 +30,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleUser roleUser;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
-    private StatusUser statusUser;
+    @Column(name = "activ")
+    private boolean activ;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "logo_id")
@@ -94,12 +93,12 @@ public class User {
         this.roleUser = roleUser;
     }
 
-    public StatusUser getStatusUser() {
-        return statusUser;
+    public boolean isActiv() {
+        return activ;
     }
 
-    public void setStatusUser(StatusUser statusUser) {
-        this.statusUser = statusUser;
+    public void setActiv(boolean activ) {
+        this.activ = activ;
     }
 
     public LogoUser getLogoUser() {
