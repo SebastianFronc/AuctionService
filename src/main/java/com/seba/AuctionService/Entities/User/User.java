@@ -116,4 +116,6 @@ public class User {
     public void setTypeUser(TypeUser typeUser) {
         this.typeUser = typeUser;
     }
+
+
 }

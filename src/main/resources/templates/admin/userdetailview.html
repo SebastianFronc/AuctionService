@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <div class="card" >
+        <article class="card-body">
+
+            <div class="card">
+                <h5 class="card-header"><i class="fas fa-address-card"></i>User detail</h5>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        User:
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"   ><i class="fas fa-at"></i> Email: <blank th:text="${user.email}"></blank> </li>
+                        <li class="list-group-item"><i class="fa fa-user"></i> Name:  <blank th:text="${user.name}"></blank></li>
+
+                    </ul>
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            User adress:
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"   ><i class="fas fa-globe-europe"></i> Province: <blank th:text="${user.adress.province}"></blank> </li>
+                            <li class="list-group-item"   ><i class="fas fa-city"></i> City: <blank th:text="${user.adress.city}"></blank> </li>
+                            <li class="list-group-item"   ><i class="fas fa-mail-bulk"></i> Zip code: <blank th:text="${user.adress.zipCode}"></blank> </li>
+                            <li class="list-group-item"   ><i class="fas fa-road"></i> Street: <blank th:text="${user.adress.street}"></blank> </li>
+                            <li class="list-group-item"   ><i class="fas fa-home"></i> Home number: <blank th:text="${user.adress.homeNumber}"></blank> </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </article>
+    </div>
+</div>
+
+</body>
+</html>

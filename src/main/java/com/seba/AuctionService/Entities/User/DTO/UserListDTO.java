@@ -2,18 +2,28 @@ package com.seba.AuctionService.Entities.User.DTO;
 
 import com.seba.AuctionService.Entities.User.*;
 
-public class UserDTO {
+public class UserListDTO {
     private long id;
     private String email;
     private String name;
-    private String password;
     private Adress adress;
     private RoleUser roleUser;
     private boolean activ;
-    private LogoUser logoUser;
     private TypeUser typeUser;
 
-    public UserDTO() {
+    public UserListDTO() {
+    }
+
+    public UserListDTO(User user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.name = user.getName();
+        this.adress = user.getAdress();
+        this.roleUser = user.getRoleUser();
+        this.activ = user.isActiv();
+        this.typeUser = user.getTypeUser();
+
+
     }
 
     public long getId() {
@@ -40,14 +50,6 @@ public class UserDTO {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Adress getAdress() {
         return adress;
     }
@@ -64,14 +66,12 @@ public class UserDTO {
         this.roleUser = roleUser;
     }
 
-
-
-    public LogoUser getLogoUser() {
-        return logoUser;
+    public boolean isActiv() {
+        return activ;
     }
 
-    public void setLogoUser(LogoUser logoUser) {
-        this.logoUser = logoUser;
+    public void setActiv(boolean activ) {
+        this.activ = activ;
     }
 
     public TypeUser getTypeUser() {
@@ -81,6 +81,4 @@ public class UserDTO {
     public void setTypeUser(TypeUser typeUser) {
         this.typeUser = typeUser;
     }
-
-
 }

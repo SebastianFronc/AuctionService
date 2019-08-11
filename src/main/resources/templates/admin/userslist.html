@@ -12,7 +12,37 @@
 <div class="d-flex justify-content-center">
     <div class="card">
 
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Email</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">City</th>
+                <th scope="col">Role</th>
+                <th scope="col">Activ</th>
+                <th scope="col">Switch</th>
 
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="userListDTO,iterationStatus : ${userListDTOS}">
+                <th scope="row" th:text="${iterationStatus.count}">1</th>
+                <td th:text="${userListDTO.email}">Email</td>
+                <td th:text="${userListDTO.name}">Name</td>
+                <td th:text="${userListDTO.typeUser}">Type</td>
+                <td th:text="${userListDTO.adress.city}">City</td>
+                <td th:text="${userListDTO.roleUser}">Role</td>
+                <td th:text="${userListDTO.activ}">Activ</td>
+                <td> <a th:href="@{'/admin/switchactiv/' + ${userListDTO.id}}"><i class="fas fa-unlock"></i></a>
+                    <a th:href="@{'/admin/switchrole/' + ${userListDTO.id}}"><i class="fas fa-tools"></i></i></a>
+                    <a th:href="@{'/admin/userdetailview/' + ${userListDTO.id}}"><i class="fas fa-info-circle"></i></a>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
     </div>
 </div>
