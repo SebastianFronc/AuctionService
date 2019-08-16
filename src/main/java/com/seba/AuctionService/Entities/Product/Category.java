@@ -1,8 +1,8 @@
 package com.seba.AuctionService.Entities.Product;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "auction_category")
@@ -25,8 +25,12 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
+    @ManyToMany
+    @Column(name = "subcategory")
+    private Set<Category> subcategory;
+
+
     public Category() {
-        this.products = new ArrayList<>();
     }
 
     public long getId() {
@@ -67,5 +71,13 @@ public class Category {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public Set<Category> getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Set<Category> subcategory) {
+        this.subcategory = subcategory;
     }
 }

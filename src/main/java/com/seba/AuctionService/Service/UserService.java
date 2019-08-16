@@ -3,6 +3,7 @@ package com.seba.AuctionService.Service;
 import com.seba.AuctionService.Entities.User.RoleUser;
 import com.seba.AuctionService.Entities.User.User;
 import com.seba.AuctionService.Repository.UserInterface;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,10 @@ public class UserService {
 
     public void save(User user){
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userInterface.save(user);
+    }
+
+    public void update(User user){
         userInterface.save(user);
     }
 

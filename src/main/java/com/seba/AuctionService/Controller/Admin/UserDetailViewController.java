@@ -1,6 +1,5 @@
 package com.seba.AuctionService.Controller.Admin;
 
-import com.seba.AuctionService.Entities.User.DTO.UserListDTO;
 import com.seba.AuctionService.Entities.User.User;
 import com.seba.AuctionService.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.Base64;
+
 
 @Controller
 
@@ -23,6 +23,8 @@ public class UserDetailViewController {
         ModelAndView modelAndView = new ModelAndView();
         User user = userService.findUserByID(id);
         modelAndView.addObject("user",user);
+        String logoEncoded = Base64.getEncoder().encodeToString(user.getLogo());
+        modelAndView.addObject("logoEncoded", logoEncoded);
         modelAndView.setViewName("admin/userdetailview");
         return modelAndView;
     }

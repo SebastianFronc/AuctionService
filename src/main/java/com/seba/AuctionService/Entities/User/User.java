@@ -2,6 +2,7 @@ package com.seba.AuctionService.Entities.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.sql.Blob;
 
 @Entity
 @Table(name = "user")
@@ -33,16 +34,15 @@ public class User {
     @Column(name = "activ")
     private boolean activ;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "logo_id")
-    private LogoUser logoUser;
+    @Lob
+    @Column(name = "logo", columnDefinition="mediumblob")
+    private byte[] logo;
 
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
 
     public User() {
         this.adress = new Adress();
-        this.logoUser = new LogoUser();
     }
 
     public long getId() {
@@ -101,12 +101,12 @@ public class User {
         this.activ = activ;
     }
 
-    public LogoUser getLogoUser() {
-        return logoUser;
+    public byte[] getLogo() {
+        return logo;
     }
 
-    public void setLogoUser(LogoUser logoUser) {
-        this.logoUser = logoUser;
+    public void setLogo(byte[] logo) {
+        this.logo = logo;
     }
 
     public TypeUser getTypeUser() {
