@@ -1,5 +1,7 @@
 package com.seba.AuctionService.Entities.Product;
 
+import org.hibernate.annotations.Any;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -26,9 +28,8 @@ public class Category {
     private List<Product> products;
 
     @ManyToMany
-    @Column(name = "subcategory")
-    private Set<Category> subcategory;
-
+    @Column(name = "sub_categories")
+    private Set<Category> subCategories;
 
     public Category() {
     }
@@ -73,11 +74,13 @@ public class Category {
         this.products = products;
     }
 
-    public Set<Category> getSubcategory() {
-        return subcategory;
+    public Set<Category> getSubCategories() {
+        return subCategories;
     }
 
-    public void setSubcategory(Set<Category> subcategory) {
-        this.subcategory = subcategory;
+    public void setSubCategories(Set<Category> subCategories) {
+        this.subCategories = subCategories;
     }
+
+
 }
