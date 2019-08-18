@@ -1,8 +1,10 @@
 package com.seba.AuctionService.Entities.Product;
 
+import org.hibernate.annotations.Any;
+
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "auction_category")
@@ -25,8 +27,17 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
+    @Column(name = "parent_category")
+    private Category parentCategory;
+
+    @ManyToMany
+    @Column(name = "sub_categories")
+    private Set<Category> subCategories;
+
+
+
+
     public Category() {
-        this.products = new ArrayList<>();
     }
 
     public long getId() {
@@ -68,4 +79,22 @@ public class Category {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+
+    public Category getParentCategory() {
+        return parentCategory;
+    }
+
+    public void setParentCategory(Category parentCategory) {
+        this.parentCategory = parentCategory;
+    }
+
+    public Set<Category> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(Set<Category> subCategories) {
+        this.subCategories = subCategories;
+    }
+
+
 }
