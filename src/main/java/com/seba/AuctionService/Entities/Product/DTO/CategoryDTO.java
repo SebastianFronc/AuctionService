@@ -9,6 +9,7 @@ public class CategoryDTO {
     private long id;
     private String name;
     private Set<Category> subCategories;
+    private long parentID;
 
     public CategoryDTO() {
     }
@@ -17,6 +18,7 @@ public class CategoryDTO {
         this.id = category.getId();
         this.name = category.getName();
         this.subCategories = category.getSubCategories();
+        this.parentID = category.getParentID();
     }
 
     public String getName() {
@@ -41,5 +43,13 @@ public class CategoryDTO {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getParentID() {
+        return parentID;
+    }
+
+    public void setParentID(long parentID) {
+        this.parentID = parentID;
     }
 }

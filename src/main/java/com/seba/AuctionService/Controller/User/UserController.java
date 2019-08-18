@@ -1,6 +1,6 @@
 package com.seba.AuctionService.Controller.User;
 
-import com.seba.AuctionService.Entities.User.DTO.LogoDAO;
+import com.seba.AuctionService.Entities.DAO.PictureDAO;
 import com.seba.AuctionService.Entities.User.User;
 import com.seba.AuctionService.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,22 +33,22 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user =  userService.findUserByEmail(authentication.getName());
-        LogoDAO logoDAO = new LogoDAO();
+        PictureDAO pictureDAO = new PictureDAO();
         modelAndView.addObject("user", user);
-        modelAndView.addObject("logoDAO",logoDAO);
+        modelAndView.addObject("pictureDAO", pictureDAO);
 
         modelAndView.setViewName("/user/edituser");
         return modelAndView;
     }
 
     @RequestMapping(value = "/user/updateuser", method = RequestMethod.POST)
-    public ModelAndView updateUser(User editedUser, LogoDAO logoDAO){
+    public ModelAndView updateUser(User editedUser, PictureDAO pictureDAO){
         ModelAndView modelAndView = new ModelAndView();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user =  userService.findUserByEmail(authentication.getName());
         user.setName(editedUser.getName());
         try {
-            user.setLogo(logoDAO.getLogoDAO().getBytes());
+            user.setLogo(pictureDAO.getPictureDAO().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

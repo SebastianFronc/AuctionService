@@ -34,9 +34,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fas fa-image"></i> </span>
                             </div>
-                    <div class="custom-file"  th:object="${logoDAO}">
-                        <input type="file" class="custom-file-input" id="customFile"   th:field="*{logoDAO}">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    <div class="custom-file"  th:object="${pictureDAO}">
+                        <input type="file" class="form-control-file" id="customFile"   th:field="*{pictureDAO}">
                     </div>
                         </div>
                     </div>
@@ -100,8 +99,9 @@
                         <button type="submit" class="btn btn-primary btn-block">Edit User</button>
                     </div>
                 </div>
-
+                </article>
             </div>
+
 
         </div>
 

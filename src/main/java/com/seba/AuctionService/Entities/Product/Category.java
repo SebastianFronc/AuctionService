@@ -21,11 +21,15 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "picture")
+    @Lob
+    @Column(name = "picture", columnDefinition="mediumblob")
     private byte[] picture;
 
     @OneToMany(mappedBy = "category")
     private List<Product> products;
+
+    @Column(name = "parent_ID")
+    private long parentID;
 
     @ManyToMany
     @Column(name = "sub_categories")
@@ -82,5 +86,11 @@ public class Category {
         this.subCategories = subCategories;
     }
 
+    public long getParentID() {
+        return parentID;
+    }
 
+    public void setParentID(long parentID) {
+        this.parentID = parentID;
+    }
 }
