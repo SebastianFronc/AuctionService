@@ -31,8 +31,10 @@ public class CategoryController {
         ModelAndView modelAndView = new ModelAndView();
         Category category = new Category();
         PictureDAO pictureDAO = new PictureDAO();
+        CategoryDTO selectedDTOcategory = new CategoryDTO();
         List<CategoryDTO> categoriesDTO = categoryService.findAllCategoryDTO();
         modelAndView.addObject("categoriesDTO", categoriesDTO);
+        modelAndView.addObject("selectedDTOcategory", selectedDTOcategory);
         modelAndView.addObject("category", category);
         modelAndView.addObject("pictureDAO", pictureDAO);
         modelAndView.setViewName("admin/addcategory");
@@ -40,19 +42,24 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/admin/addcategory", method = RequestMethod.POST)
-    public ModelAndView addCategoryPost(Category category, PictureDAO pictureDAO) {
+    public ModelAndView addCategoryPost(Category category, PictureDAO pictureDAO, CategoryDTO selectedDTOcategory) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             category.setPicture(pictureDAO.getPictureDAO().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Category parent = getCategoryFromDTO(selectedDTOcategory);
+        category.setParent(parent);
         categoryService.save(category);
-        Category parentCategory = categoryService.findByID(category.getParentID());
-        parentCategory.getSubCategories().add(category);
-        categoryService.save(parentCategory);
+        parent.getSubCategories().add(category);
+        categoryService.save(parent);
         modelAndView.setViewName("redirect:/admin/listofcategory");
         return modelAndView;
+    }
+
+    private Category getCategoryFromDTO(CategoryDTO categoryDTO){
+        return categoryService.findByID(categoryDTO.getIdDTO());
     }
 
 

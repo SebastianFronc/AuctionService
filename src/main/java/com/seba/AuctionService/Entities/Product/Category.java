@@ -28,11 +28,11 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
-    @Column(name = "parent_ID")
-    private long parentID;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Category parent;
 
-    @ManyToMany
-    @Column(name = "sub_categories")
+    @OneToMany(mappedBy = "parent")
     private Set<Category> subCategories;
 
     public Category() {
@@ -86,11 +86,11 @@ public class Category {
         this.subCategories = subCategories;
     }
 
-    public long getParentID() {
-        return parentID;
+    public Category getParent() {
+        return parent;
     }
 
-    public void setParentID(long parentID) {
-        this.parentID = parentID;
+    public void setParent(Category parent) {
+        this.parent = parent;
     }
 }

@@ -6,19 +6,17 @@ import java.util.Set;
 
 public class CategoryDTO {
 
-    private long id;
+    private long idDTO;
     private String name;
-    private Set<Category> subCategories;
     private long parentID;
 
     public CategoryDTO() {
     }
 
     public CategoryDTO(Category category){
-        this.id = category.getId();
+        this.idDTO = category.getId();
         this.name = category.getName();
-        this.subCategories = category.getSubCategories();
-        this.parentID = category.getParentID();
+        this.parentID = category.getParent().getId();
     }
 
     public String getName() {
@@ -29,20 +27,12 @@ public class CategoryDTO {
         this.name = name;
     }
 
-    public Set<Category> getSubCategories() {
-        return subCategories;
+    public long getIdDTO() {
+        return idDTO;
     }
 
-    public void setSubCategories(Set<Category> subCategories) {
-        this.subCategories = subCategories;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long idDTO) {
+        this.idDTO = idDTO;
     }
 
     public long getParentID() {
@@ -52,4 +42,5 @@ public class CategoryDTO {
     public void setParentID(long parentID) {
         this.parentID = parentID;
     }
+
 }
