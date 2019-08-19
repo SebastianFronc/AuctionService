@@ -3,6 +3,7 @@ package com.seba.AuctionService.Controller.Category;
 import com.seba.AuctionService.Entities.DAO.PictureDAO;
 import com.seba.AuctionService.Entities.Product.Category;
 import com.seba.AuctionService.Entities.Product.DTO.CategoryDTO;
+import com.seba.AuctionService.Entities.Product.DTO.CategoryForm;
 import com.seba.AuctionService.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,27 +30,24 @@ public class CategoryController {
     @RequestMapping(value = "/admin/addcategory", method = RequestMethod.GET)
     public ModelAndView addCategory(){
         ModelAndView modelAndView = new ModelAndView();
-        Category category = new Category();
-        PictureDAO pictureDAO = new PictureDAO();
-        CategoryDTO selectedDTOcategory = new CategoryDTO();
+        CategoryForm categoryForm = new CategoryForm();
         List<CategoryDTO> categoriesDTO = categoryService.findAllCategoryDTO();
         modelAndView.addObject("categoriesDTO", categoriesDTO);
-        modelAndView.addObject("selectedDTOcategory", selectedDTOcategory);
-        modelAndView.addObject("category", category);
-        modelAndView.addObject("pictureDAO", pictureDAO);
+        modelAndView.addObject("categoryForm", categoryForm);
         modelAndView.setViewName("admin/addcategory");
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin/addcategory", method = RequestMethod.POST)
-    public ModelAndView addCategoryPost(Category category, PictureDAO pictureDAO, CategoryDTO selectedDTOcategory) {
+    public ModelAndView addCategoryPost(CategoryForm categoryForm) {
         ModelAndView modelAndView = new ModelAndView();
+        Category category = categoryForm.getCategory();
         try {
-            category.setPicture(pictureDAO.getPictureDAO().getBytes());
+            category.setPicture(categoryForm.getPictureDAO().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Category parent = getCategoryFromDTO(selectedDTOcategory);
+        Category parent = categoryService.findByID(categoryForm.getSlectedCategoryDTO().getIdDTO());
         category.setParent(parent);
         categoryService.save(category);
         parent.getSubCategories().add(category);
@@ -58,9 +56,7 @@ public class CategoryController {
         return modelAndView;
     }
 
-    private Category getCategoryFromDTO(CategoryDTO categoryDTO){
-        return categoryService.findByID(categoryDTO.getIdDTO());
-    }
+
 
 
     public void listOfCategoryWithLevel(Category[] categories, int index, int level){

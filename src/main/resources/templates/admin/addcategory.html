@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="d-flex justify-content-center">
-    <form th:object="${category}" action="#" th:action="@{/admin/addcategory}" method="post"   enctype="multipart/form-data">
+    <form th:object="${categoryForm}" action="#" th:action="@{/admin/addcategory}" method="post"   enctype="multipart/form-data">
         <div class="d-flex justify-content-center">
             <div class="card" >
                 <article class="card-body">
@@ -25,13 +25,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                             </div>
-                            <input name="" class="form-control" placeholder="Name" type="text" th:field="*{name}">
+                            <input name="" class="form-control" placeholder="Name" type="text" th:field="*{category.name}">
                         </div>
                     </div>
 
-                    <div class="form-group" th:object="${selectedDTOcategory}">
+                    <div class="form-group">
                         <label for="exampleFormControlSelect2">Parent category</label>
-                        <select class="form-control" id="exampleFormControlSelect2"  th:field="*{idDTO}" >
+                        <select class="form-control" id="exampleFormControlSelect2"  th:field="*{slectedCategoryDTO.idDTO}" >
                             <option th:each="categoryDTO : ${categoriesDTO}"  th:value="${categoryDTO.idDTO}" th:text="${categoryDTO.name}">Parent category</option>
                         </select>
                         </div>
@@ -42,7 +42,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fas fa-image"></i> </span>
                             </div>
-                            <div class="custom-file"  th:object="${pictureDAO}">
+                            <div class="custom-file">
                                 <input type="file" class="form-control-file" id="customFile"   th:field="*{pictureDAO}">
                             </div>
                         </div>
@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{description}" ></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{category.description}" ></textarea>
                     </div>
 
 

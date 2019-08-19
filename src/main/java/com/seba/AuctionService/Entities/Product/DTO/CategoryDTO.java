@@ -31,7 +31,7 @@ public class CategoryDTO {
         return idDTO;
     }
 
-    public void setId(long idDTO) {
+    public void setIdDTO(long idDTO) {
         this.idDTO = idDTO;
     }
 
