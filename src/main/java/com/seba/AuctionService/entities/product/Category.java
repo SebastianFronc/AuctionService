@@ -87,10 +87,12 @@ public class Category {
         this.subCategories = subCategories;
     }
 
+    @Nullable
     public Category getParent() {
         return parent;
     }
 
+    @Nullable
     public void setParent(Category parent) {
         this.parent = parent;
     }

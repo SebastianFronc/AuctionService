@@ -33,6 +33,10 @@ public class CategoryService {
         return list;
     }
 
+    public Category findCategoryByParentNull(){
+        return categoryInterface.findCategoryByParentNull();
+    }
+
     public Category findByID(long id){
         return categoryInterface.findById(id);
     }

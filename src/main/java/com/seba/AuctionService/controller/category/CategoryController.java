@@ -41,11 +41,15 @@ public class CategoryController {
             e.printStackTrace();
         }
 
-        Category parent = categoryService.findByID(categoryForm.getSlectedCategoryDTO().getIdDTO());
-        category.setParent(parent);
+        if (!(categoryForm.getSlectedCategoryDTO() == null)) {
+            Category parent = categoryService.findByID(categoryForm.getSlectedCategoryDTO().getIdDTO());
+            category.setParent(parent);
+            parent.getSubCategories().add(category);
+            categoryService.save(parent);
+        }
+
         categoryService.save(category);
-        parent.getSubCategories().add(category);
-        categoryService.save(parent);
+
         modelAndView.setViewName("redirect:/admin/listofcategory");
         return modelAndView;
     }
@@ -53,7 +57,7 @@ public class CategoryController {
     @RequestMapping(value = "admin/listofcategory", method = RequestMethod.GET)
     public ModelAndView listOfCategory(){
         ModelAndView modelAndView = new ModelAndView();
-        Category mainCategory = categoryService.findByID(0);
+        Category mainCategory = categoryService.findCategoryByParentNull();
         Set<Category> mainSubCategories = mainCategory.getSubCategories();
         modelAndView.addObject("subMainCategories", mainSubCategories);
         modelAndView.setViewName("admin/listofcategory");

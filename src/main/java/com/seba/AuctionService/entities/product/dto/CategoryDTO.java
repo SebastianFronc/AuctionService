@@ -1,11 +1,13 @@
 package com.seba.AuctionService.entities.product.dto;
 
 import com.seba.AuctionService.entities.product.Category;
+import org.springframework.lang.Nullable;
 
 public class CategoryDTO {
 
     private long idDTO;
     private String name;
+    @Nullable
     private long parentID;
 
     public CategoryDTO() {
@@ -14,7 +16,9 @@ public class CategoryDTO {
     public CategoryDTO(Category category){
         this.idDTO = category.getId();
         this.name = category.getName();
-        this.parentID = category.getParent().getId();
+        if (!(category.getParent() == null)) {
+            this.parentID = category.getParent().getId();
+        }
     }
 
     public String getName() {
