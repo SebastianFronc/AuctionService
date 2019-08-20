@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:fragment="category">
+    <ul>
+        <li th:each="category : ${maincategories}">
+            <span th:text="${category.name}">Main Cat</span>
+            <section th:include="@{admin/categoryFragment} :: category" th:with="maincategories=${category.getSubCategories()}"></section>
+        </li>
+    </ul>
+</section>
+</html>

@@ -13,8 +13,11 @@
 <div class="d-flex justify-content-center">
     <div class="card">
 
+        <section th:include="@{admin/categoryFragment} :: category" th:with="maincategories=${subMainCategories}"></section>
+
     </div>
 </div>
+
 
 
 
