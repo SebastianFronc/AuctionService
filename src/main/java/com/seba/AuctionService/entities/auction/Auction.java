@@ -17,6 +17,9 @@ public class Auction {
     @Column(name = "actual_price")
     private BigDecimal actualPrice;
 
+    @Column(name = "is_ended")
+    private boolean isEnded;
+
     @ManyToOne
     @JoinColumn(name = "actual_winner_id")
     private User actualWinner;
@@ -46,5 +49,13 @@ public class Auction {
 
     public void setActualWinner(User actualWinner) {
         this.actualWinner = actualWinner;
+    }
+
+    public boolean isEnded() {
+        return isEnded;
+    }
+
+    public void setEnded(boolean ended) {
+        isEnded = ended;
     }
 }

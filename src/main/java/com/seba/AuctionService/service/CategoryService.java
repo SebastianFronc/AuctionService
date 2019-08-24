@@ -41,6 +41,18 @@ public class CategoryService {
         return categoryInterface.findById(id);
     }
 
+    public List<Category> findCategoriesBySubCategoriesEmptyOrSubCategoriesNull(){
+        return categoryInterface.findCategoriesBySubCategoriesEmptyOrSubCategoriesNull();
+    }
+
+    public List<CategoryDTO> findCategoriesDTOBySubCategoriesEmptyOrSubCategoriesNull(){
+        List<CategoryDTO> list = new ArrayList<>();
+        for (Category category: categoryInterface.findCategoriesBySubCategoriesEmptyOrSubCategoriesNull()) {
+            list.add(new CategoryDTO(category));
+        }
+        return list;
+    }
+
 
 
 }

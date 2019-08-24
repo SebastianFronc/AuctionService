@@ -7,8 +7,7 @@ public class CategoryDTO {
 
     private long idDTO;
     private String name;
-    @Nullable
-    private long parentID;
+    private Long parentID;
 
     public CategoryDTO() {
     }
@@ -33,7 +32,7 @@ public class CategoryDTO {
         return idDTO;
     }
 
-    public void setIdDTO(long idDTO) {
+    public void setIdDTO(Long idDTO) {
         this.idDTO = idDTO;
     }
 
@@ -41,7 +40,7 @@ public class CategoryDTO {
         return parentID;
     }
 
-    public void setParentID(long parentID) {
+    public void setParentID(Long parentID) {
         this.parentID = parentID;
     }
 

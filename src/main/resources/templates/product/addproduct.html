@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <form th:object="${productForm}" action="#" th:action="@{/product/addproduct}" method="post"   enctype="multipart/form-data">
+        <div class="d-flex justify-content-center">
+            <div class="card" >
+                <article class="card-body">
+
+                    <h4 class="card-title text-center mb-4 mt-1"> <i class="fas fa-address-card"></i>Add product</h4>
+                    <hr>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input name="" class="form-control" placeholder="Tittle" type="text" th:field="*{product.tittle}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input name="" class="form-control" placeholder="Description" type="text" th:field="*{product.description}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fas fa-image"></i> </span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="form-control-file" id="customFile"   th:field="*{pictureDAO}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input name="" class="form-control" placeholder="Minimal Price" type="text" th:field="*{product.minimalPrice}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input name="" class="form-control" placeholder="Buy Now Price" type="text" th:field="*{product.buyNowPrice}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                            </div>
+                            <input name="" class="form-control" placeholder="Duration days" type="text" th:field="*{daysDuration}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Category</label>
+                        <select class="form-control" id="exampleFormControlSelect2"  th:field="*{slectedCategoryDTO.idDTO}" >
+                            <option th:each="categoryDTO : ${categoryDTOS}"  th:value="${categoryDTO.idDTO}" th:text="${categoryDTO.name}">Parent category</option>
+                        </select>
+                    </div>
+
+
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group" >
+                            <button type="submit" class="btn btn-primary btn-block">Add product</button>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+
+
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
