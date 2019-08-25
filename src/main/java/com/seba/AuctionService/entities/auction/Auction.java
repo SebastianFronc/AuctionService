@@ -1,5 +1,6 @@
 package com.seba.AuctionService.entities.auction;
 
+import com.seba.AuctionService.entities.product.Product;
 import com.seba.AuctionService.entities.user.User;
 
 import javax.persistence.*;
@@ -17,12 +18,16 @@ public class Auction {
     @Column(name = "actual_price")
     private BigDecimal actualPrice;
 
-    @Column(name = "is_ended")
-    private boolean isEnded;
+    @Column(name = "ended")
+    private boolean ended;
 
     @ManyToOne
     @JoinColumn(name = "actual_winner_id")
     private User actualWinner;
+
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     public Auction() {
     }
@@ -52,10 +57,18 @@ public class Auction {
     }
 
     public boolean isEnded() {
-        return isEnded;
+        return ended;
     }
 
     public void setEnded(boolean ended) {
-        isEnded = ended;
+        this.ended = ended;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

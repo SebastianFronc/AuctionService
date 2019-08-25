@@ -1,0 +1,12 @@
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.userDetailImage {
+    height: auto;
+    width: 200px;
+    margin: auto;
+
+}

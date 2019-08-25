@@ -10,13 +10,9 @@
 
 </head>
 <body>
-<div class="d-flex justify-content-center">
-    <div class="card">
-
-        <section th:include="@{admin/categoryFragment} :: category" th:with="maincategories=${subMainCategories}"></section>
-
-    </div>
-</div>
+<aside>
+    <aside th:include="@{auction/fragments/asideMenuCategory} :: asidemenu" th:with="subMainCategories=${subMainCategories}"> </aside>
+</aside>
 
 </body>
 </html>

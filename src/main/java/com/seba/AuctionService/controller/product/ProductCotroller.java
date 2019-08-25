@@ -5,6 +5,7 @@ import com.seba.AuctionService.entities.product.dto.CategoryDTO;
 import com.seba.AuctionService.entities.product.dto.ProductForm;
 import com.seba.AuctionService.entities.user.TypeUser;
 import com.seba.AuctionService.entities.user.User;
+import com.seba.AuctionService.service.AuctionService;
 import com.seba.AuctionService.service.CategoryService;
 import com.seba.AuctionService.service.ProductService;
 import com.seba.AuctionService.service.UserService;
@@ -30,6 +31,8 @@ public class ProductCotroller {
     CategoryService categoryService;
     @Autowired
     UserService userService;
+    @Autowired
+    AuctionService auctionService;
 
 
 
@@ -69,6 +72,7 @@ public class ProductCotroller {
         }
 
         productService.save(product);
+        auctionService.save(product);
         modelAndView.setViewName("redirect:/home");
         return modelAndView;
     }

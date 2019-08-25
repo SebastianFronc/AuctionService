@@ -5,6 +5,7 @@
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/image.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -20,11 +21,15 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-header">
                         User:
-                        <img  th:src="@{'data:image/jpeg;base64,'+${logoEncoded}}" />
-
 
                     </div>
                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item"  >
+                            <div class="userDetailImage">
+                            <img  class="rounded mx-auto d-block"
+                                  th:src="@{'data:image/jpeg;base64,'+${logoEncoded}}"  alt="..."/>
+                            </div>
+                        </li>
                         <li class="list-group-item"   ><i class="fas fa-at"></i> Email: <blank th:text="${user.email}"></blank> </li>
                         <li class="list-group-item"><i class="fa fa-user"></i> Name:  <blank th:text="${user.name}"></blank></li>
 

@@ -1,0 +1,13 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:fragment="asidemenu">
+
+    <div class="d-flex">
+        <div class="card">
+
+            <section th:include="@{auction/fragments/asideFragmentForManuCategory} :: category" th:with="maincategories=${subMainCategories}"></section>
+
+        </div>
+    </div>
+</section>
+</html>
